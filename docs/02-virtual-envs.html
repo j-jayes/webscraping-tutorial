@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Webscraping Tutorial - References</title>
+<title>Webscraping Tutorial - 2&nbsp; Getting Started: Setting Up a Virtual Environment and Installing Packages</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,7 +64,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./04-scraping-sars.html" rel="prev">
+<link href="./03-scraping-basics.html" rel="next">
+<link href="./01-intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -93,7 +109,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-virtual-envs.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">**Getting Started: Setting Up a Virtual Environment and Installing Packages**</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -132,7 +148,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02-virtual-envs.html" class="sidebar-item-text sidebar-link">
+  <a href="./02-virtual-envs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>Getting Started: Setting Up a Virtual Environment and Installing Packages</strong></span></span></a>
   </div>
 </li>
@@ -150,7 +166,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -167,7 +183,7 @@ div.csl-indent {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>Getting Started: Setting Up a Virtual Environment and Installing Packages</strong></span></h1>
 </div>
 
 
@@ -182,11 +198,137 @@ div.csl-indent {
 
 </header>
 
-<div id="refs" role="list" style="display: none">
-
+<hr>
+<p>In this section, we will cover the essential steps to set up your Python development environment. Setting up a virtual environment ensures that your projects are isolated, allowing you to manage dependencies effectively without affecting your global Python installation. This is particularly important for maintaining a clean and conflict-free workspace.</p>
+<section id="setting-up-a-virtual-environment-with-venv" class="level4" data-number="2.0.0.1">
+<h4 data-number="2.0.0.1" class="anchored" data-anchor-id="setting-up-a-virtual-environment-with-venv"><span class="header-section-number">2.0.0.1</span> <strong>1. Setting Up a Virtual Environment with <code>venv</code></strong></h4>
+<p>A virtual environment in Python is an isolated environment that allows you to install packages and dependencies specific to your project without interfering with other projects or the global Python installation.</p>
+<section id="setting-up-on-macos" class="level5" data-number="2.0.0.1.1">
+<h5 data-number="2.0.0.1.1" class="anchored" data-anchor-id="setting-up-on-macos"><span class="header-section-number">2.0.0.1.1</span> <strong>1.1 Setting Up on MacOS</strong></h5>
+<p>Follow these steps to create and activate a virtual environment on MacOS:</p>
+<ol type="1">
+<li><p><strong>Open Terminal:</strong><br>
+Start by opening the Terminal application on your Mac.</p></li>
+<li><p><strong>Navigate to Your Project Directory:</strong><br>
+Use the <code>cd</code> command to navigate to the directory where you want to create your project.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> path/to/your/project-directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Create a Virtual Environment:</strong><br>
+Use the following command to create a virtual environment. Replace <code>myenv</code> with the name you want for your virtual environment.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python3</span> <span class="at">-m</span> venv myenv</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Activate the Virtual Environment:</strong><br>
+After creating the virtual environment, you need to activate it. Run the following command:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">source</span> myenv/bin/activate</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Once activated, you’ll see the name of your virtual environment (e.g., <code>(myenv)</code>) appear at the beginning of your command line prompt, indicating that the environment is active.</p></li>
+<li><p><strong>Deactivate the Virtual Environment:</strong><br>
+When you are done working in the virtual environment, deactivate it by running:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">deactivate</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="setting-up-on-windows" class="level5" data-number="2.0.0.1.2">
+<h5 data-number="2.0.0.1.2" class="anchored" data-anchor-id="setting-up-on-windows"><span class="header-section-number">2.0.0.1.2</span> <strong>1.2 Setting Up on Windows</strong></h5>
+<p>For Windows users, the process is slightly different:</p>
+<ol type="1">
+<li><p><strong>Open Command Prompt or PowerShell:</strong><br>
+You can use either Command Prompt or PowerShell to set up your virtual environment.</p></li>
+<li><p><strong>Navigate to Your Project Directory:</strong><br>
+Use the <code>cd</code> command to navigate to your project directory.</p>
+<pre class="cmd"><code>cd path\to\your\project-directory</code></pre></li>
+<li><p><strong>Create a Virtual Environment:</strong><br>
+Create a virtual environment using the following command. Replace <code>myenv</code> with your chosen environment name.</p>
+<pre class="cmd"><code>python -m venv myenv</code></pre></li>
+<li><p><strong>Activate the Virtual Environment:</strong><br>
+To activate the virtual environment, run:</p>
+<ul>
+<li><p><strong>For Command Prompt:</strong></p>
+<pre class="cmd"><code>myenv\Scripts\activate</code></pre></li>
+<li><p><strong>For PowerShell:</strong></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode powershell code-with-copy"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>\myenv\Scripts\Activate<span class="op">.</span><span class="fu">ps1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ul>
+<p>After activation, you should see <code>(myenv)</code> at the beginning of your prompt, indicating that the virtual environment is active.</p></li>
+<li><p><strong>Deactivate the Virtual Environment:</strong><br>
+To deactivate the environment when you are done, simply run:</p>
+<pre class="cmd"><code>deactivate</code></pre></li>
+</ol>
+<hr>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
 </div>
+<div class="callout-title-container flex-fill">
+Tip: Virtual Environment
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Setting up a virtual environment ensures that your project dependencies are isolated and easy to manage. This isolation prevents conflicts between different projects and keeps your global Python environment clean.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Warning:</strong> Always remember to activate your virtual environment before installing any packages to ensure they are installed within the environment and not globally.</p>
+</div>
+</div>
+<hr>
+</section>
+</section>
+<section id="installing-packages-with-pip" class="level4" data-number="2.0.0.2">
+<h4 data-number="2.0.0.2" class="anchored" data-anchor-id="installing-packages-with-pip"><span class="header-section-number">2.0.0.2</span> <strong>2. Installing Packages with <code>pip</code></strong></h4>
+<p>Once your virtual environment is activated, you can install the necessary packages using <code>pip</code>, Python’s package manager. We’ll start by installing two essential libraries for web scraping: <code>requests</code> and <code>BeautifulSoup4</code>.</p>
+<section id="installing-packages" class="level5" data-number="2.0.0.2.1">
+<h5 data-number="2.0.0.2.1" class="anchored" data-anchor-id="installing-packages"><span class="header-section-number">2.0.0.2.1</span> <strong>2.1 Installing Packages</strong></h5>
+<ol type="1">
+<li><p><strong>Ensure Your Virtual Environment is Activated:</strong><br>
+Before installing any packages, make sure your virtual environment is active. If you see <code>(myenv)</code> at the beginning of your command line, you’re good to go.</p></li>
+<li><p><strong>Install <code>requests</code> and <code>BeautifulSoup4</code>:</strong><br>
+Use the following command to install both packages:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install requests beautifulsoup4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command tells <code>pip</code> to download and install the <code>requests</code> library, which allows you to send HTTP requests, and <code>BeautifulSoup4</code>, a library for parsing HTML and XML documents.</p></li>
+<li><p><strong>Verify the Installation:</strong><br>
+After installation, you can verify that the packages were installed correctly by listing the installed packages:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You should see <code>requests</code> and <code>beautifulsoup4</code> in the list of installed packages.</p></li>
+</ol>
+</section>
+<section id="installing-specific-versions-of-packages" class="level5" data-number="2.0.0.2.2">
+<h5 data-number="2.0.0.2.2" class="anchored" data-anchor-id="installing-specific-versions-of-packages"><span class="header-section-number">2.0.0.2.2</span> <strong>2.2 Installing Specific Versions of Packages</strong></h5>
+<p>If you need to install a specific version of a package, you can specify the version number:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install requests==2.26.0</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This command will install version 2.26.0 of the <code>requests</code> package. Specifying versions can be useful when working on projects that require a particular version of a library.</p>
+</section>
+<section id="freezing-requirements" class="level5" data-number="2.0.0.2.3">
+<h5 data-number="2.0.0.2.3" class="anchored" data-anchor-id="freezing-requirements"><span class="header-section-number">2.0.0.2.3</span> <strong>2.3 Freezing Requirements</strong></h5>
+<p>To make it easier to recreate the same environment later or share with others, you can “freeze” your environment’s current state to a <code>requirements.txt</code> file:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> freeze <span class="op">&gt;</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This file lists all the packages and their versions currently installed in your environment. Later, you or someone else can recreate the same environment by running:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Note:</strong> Keeping your <code>requirements.txt</code> file up to date ensures that others can easily set up an identical environment for your project.</p>
+</div>
+</div>
+<hr>
+<p>With your virtual environment set up and the necessary packages installed, you’re ready to start working on your web scraping project. In the next section, we’ll begin by scraping data from a simple webpage, <code>example.com</code>, and exploring how to use tools like SelectorGadget to identify the elements you need.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -422,14 +564,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
-
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./04-scraping-sars.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title"><strong>Scraping a Table from the SARS Website</strong></span></span>
+      <a href="./01-intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction and Purpose</strong></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./03-scraping-basics.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>Scraping Basics and Scraping <code>example.com</code></strong></span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

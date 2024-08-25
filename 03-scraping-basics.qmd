@@ -1,0 +1,183 @@
+### **Scraping Basics and Scraping `example.com`**
+
+---
+
+In this section, we will dive into the fundamentals of web scraping and provide a hands-on example by scraping a simple webpage, `example.com`. This exercise will help you understand how to send HTTP requests, parse HTML content, and extract specific data from a webpage.
+
+#### **1. What is Web Scraping?**
+
+Web scraping is the process of programmatically extracting information from websites. It involves fetching the content of a webpage, parsing the HTML, and selecting the data you need. Web scraping is a powerful tool for gathering data from the web for various applications, such as data analysis, machine learning, and automation.
+
+However, it’s important to note that not all websites allow scraping, and some have measures in place to prevent it. Always check a website’s `robots.txt` file or terms of service to ensure you are scraping responsibly and within legal boundaries.
+
+---
+
+::: {.callout-important}
+## Understanding `robots.txt`
+
+
+**Important:** Always respect the terms of service of the website you are scraping. Be mindful of legal and ethical considerations when scraping data, and avoid overloading servers with frequent requests.
+
+A `robots.txt` file is a simple text file placed at the root of a website to provide instructions to web crawlers and bots about which parts of the website they are allowed to access and index. When a web scraper or search engine bot visits a site, it typically checks the `robots.txt` file first to see what it is permitted to scrape.
+
+### Key Points:
+- **Location:** The `robots.txt` file is located at the root of a website, usually accessible via `http://example.com/robots.txt`.
+- **Syntax:** The file consists of directives that allow or disallow access to specific parts of the site. For example:
+  ```plaintext
+  User-agent: *
+  Disallow: /private-directory/
+  ```
+  This example tells all user agents (crawlers) that they are not allowed to access `/private-directory/`.
+
+- **Respecting `robots.txt`:** While the directives in `robots.txt` are not legally binding, ethical web scraping practices dictate that you should respect them. Ignoring these directives could lead to legal repercussions or your IP address being blocked by the website.
+
+- **Limitations:** Keep in mind that `robots.txt` is a voluntary protocol. Some bots might choose to ignore it, and it cannot prevent all forms of access.
+
+Before scraping a website, always check the `robots.txt` file to ensure your activities align with the website's guidelines.
+
+:::
+
+---
+
+#### **2. Overview of Scraping Process**
+
+The general process for web scraping involves the following steps:
+
+1. **Sending an HTTP Request:**  
+   Use a Python library like `requests` to send an HTTP request to the server hosting the website.
+
+2. **Retrieving the Response:**  
+   The server returns an HTTP response, typically containing the HTML of the webpage.
+
+3. **Parsing the HTML:**  
+   Use a library like `BeautifulSoup` to parse the HTML and navigate the structure of the webpage.
+
+4. **Identifying and Extracting Data:**  
+   Locate the specific HTML elements (e.g., `<div>`, `<p>`, `<a>`, etc.) that contain the data you want and extract it.
+
+5. **Saving or Processing the Data:**  
+   Store the extracted data in a suitable format, such as a CSV file or a database, for further analysis or use.
+
+---
+
+#### **3. Scraping `example.com`: A Hands-On Example**
+
+To get started with web scraping, we'll walk through a simple example using `example.com`, a placeholder domain provided by IANA (Internet Assigned Numbers Authority). While this website contains very basic content, it is perfect for demonstrating the fundamental concepts of web scraping.
+
+##### **3.1 Sending an HTTP Request**
+
+First, we'll send an HTTP GET request to `example.com` using the `requests` library.
+
+```python
+import requests
+
+# Send a GET request to the webpage
+url = "http://example.com"
+response = requests.get(url)
+
+# Check if the request was successful
+if response.status_code == 200:
+    print("Successfully fetched the webpage!")
+else:
+    print(f"Failed to fetch the webpage. Status code: {response.status_code}")
+```
+
+In this code snippet:
+- We import the `requests` library.
+- We define the URL for `example.com`.
+- We send a GET request to fetch the webpage.
+- We check if the request was successful by inspecting the status code (200 indicates success).
+
+##### **3.2 Parsing the HTML**
+
+Next, we need to parse the HTML content of the page using `BeautifulSoup` to make it easier to navigate and extract specific elements.
+
+```python
+from bs4 import BeautifulSoup
+
+# Parse the HTML content
+soup = BeautifulSoup(response.text, 'html.parser')
+
+# Print the title of the webpage
+title = soup.title.string
+print(f"Page Title: {title}")
+```
+
+In this snippet:
+- We import `BeautifulSoup` from the `bs4` library.
+- We parse the HTML content of the response using `BeautifulSoup` with the HTML parser.
+- We extract and print the title of the webpage using the `<title>` tag.
+
+##### **3.3 Extracting Specific Data**
+
+Let’s extract specific elements from the page. For example, we'll extract all the paragraphs (`<p>` tags) on the page.
+
+```python
+# Extract and print all paragraphs
+paragraphs = soup.find_all('p')
+for idx, paragraph in enumerate(paragraphs, start=1):
+    print(f"Paragraph {idx}: {paragraph.text}")
+```
+
+In this snippet:
+- We use `soup.find_all('p')` to find all paragraph elements on the page.
+- We loop through each paragraph and print its content.
+
+##### **3.4 Summary of Extracted Data**
+
+For `example.com`, the content is very simple. The title of the page is "Example Domain," and the body contains just a few paragraphs explaining the purpose of the domain. By following these steps, you’ve successfully scraped and extracted data from a webpage!
+
+---
+
+::: {.callout-tip}
+## Tip: Inspecting Web Pages
+Use your web browser’s developer tools (usually accessible by right-clicking on the page and selecting "Inspect") to explore the HTML structure of a webpage. This helps in identifying the tags and classes associated with the data you want to scrape.
+:::
+
+---
+
+#### **4. Using SelectorGadget to Identify HTML Elements**
+
+To scrape more complex websites, it’s essential to accurately identify the HTML elements that contain the data you need. SelectorGadget is a browser extension that simplifies this process by allowing you to click on elements and automatically generating the correct CSS selector.
+
+##### **4.1 Installing SelectorGadget**
+
+1. **Chrome:**  
+   Install the SelectorGadget extension from the Chrome Web Store.
+
+2. **Firefox:**  
+   Install the SelectorGadget bookmarklet by visiting the SelectorGadget website.
+
+##### **4.2 Using SelectorGadget**
+
+1. **Activate SelectorGadget:**  
+   Click the SelectorGadget icon in your browser to activate it.
+
+2. **Select Elements:**  
+   Hover over elements on the webpage to highlight them. Click to select an element. SelectorGadget will generate a CSS selector that you can use in your scraping script.
+
+3. **Refine Selection:**  
+   If the initial selection is too broad or too narrow, you can click on additional elements to refine the selector. The goal is to create a selector that precisely targets the data you want to extract.
+
+##### **4.3 Applying the Selector in Your Code**
+
+Once you have the CSS selector from SelectorGadget, you can use it in your `BeautifulSoup` code to target specific elements.
+
+```python
+# Example: Using a CSS selector to find elements
+selected_elements = soup.select('css-selector-from-selectorgadget')
+for element in selected_elements:
+    print(element.text)
+```
+
+Replace `'css-selector-from-selectorgadget'` with the actual selector provided by SelectorGadget.
+
+---
+
+### **Conclusion**
+
+In this section, you’ve learned the basics of web scraping, including how to send HTTP requests, parse HTML content, and extract specific data. You’ve also seen how to use SelectorGadget to simplify the process of identifying HTML elements on more complex webpages. 
+
+With these foundational skills, you are now ready to tackle more advanced scraping tasks. In the next section, we will explore scraping structured data from a table on the SARS website and saving it for further use.
+
+---

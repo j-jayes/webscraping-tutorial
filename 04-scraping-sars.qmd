@@ -1,0 +1,150 @@
+### **Scraping a Table from the SARS Website**
+
+---
+
+In this section, you will learn how to scrape data from a table on the SARS website, specifically the exchange rates table, and save this data to a pandas DataFrame. Once the data is in a DataFrame, we will also demonstrate how to save it as a JSON file for further use.
+
+#### **1. Inspecting the Webpage**
+
+The first step in web scraping is to inspect the webpage to identify the structure and the elements you want to extract. The SARS Rates of Exchange page contains a table with exchange rates for various currencies. This table is defined using standard HTML `<table>` tags, with each row (`<tr>`) containing data for a different currency.
+
+To scrape this table, we'll focus on extracting the following data for each currency:
+- Country name
+- Abbreviation
+- Currency name
+- Exchange rate
+
+The HTML structure of the table includes:
+- A table element with class `table table-bordered gvExt`.
+- Each row (`<tr>`) contains several cells (`<td>`), where:
+  - The first cell contains the country flag (which we will ignore).
+  - The second cell contains the country name.
+  - The third cell contains the currency abbreviation.
+  - The fourth cell contains the currency name.
+  - The fifth cell contains the exchange rate.
+
+---
+
+#### **2. Setting Up Your Environment**
+
+Before we start scraping, ensure that you have the necessary Python libraries installed in your virtual environment. We will use `requests` to fetch the webpage content, `BeautifulSoup` to parse the HTML, and `pandas` to store the data in a DataFrame.
+
+```bash
+pip install requests beautifulsoup4 pandas
+```
+
+---
+
+#### **3. Writing the Scraper**
+
+Below is the step-by-step guide to scraping the exchange rates table from the SARS website:
+
+##### **3.1 Importing the Required Libraries**
+
+Start by importing the necessary libraries.
+
+```python
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+```
+
+##### **3.2 Sending a GET Request to Fetch the Webpage**
+
+We’ll send an HTTP GET request to retrieve the HTML content of the webpage.
+
+```python
+url = "https://tools.sars.gov.za/rex/Rates/Default.aspx"
+response = requests.get(url)
+
+if response.status_code == 200:
+    print("Successfully fetched the webpage!")
+else:
+    print(f"Failed to fetch the webpage. Status code: {response.status_code}")
+```
+
+##### **3.3 Parsing the HTML with BeautifulSoup**
+
+Next, parse the HTML content using BeautifulSoup.
+
+```python
+soup = BeautifulSoup(response.text, 'html.parser')
+```
+
+##### **3.4 Locating the Table and Extracting Data**
+
+We will locate the table by its class name and then iterate over the rows to extract the relevant data.
+
+```python
+# Locate the table
+table = soup.find('table', {'class': 'table table-bordered gvExt'})
+
+# Prepare lists to store the extracted data
+countries = []
+abbreviations = []
+currencies = []
+rates = []
+
+# Loop through each row in the table
+for row in table.find_all('tr')[1:]:  # Skip the header row
+    cells = row.find_all('td')
+    country = cells[1].text.strip()
+    abbreviation = cells[2].text.strip()
+    currency = cells[3].text.strip()
+    rate = float(cells[4].text.strip())
+    
+    # Append the data to the lists
+    countries.append(country)
+    abbreviations.append(abbreviation)
+    currencies.append(currency)
+    rates.append(rate)
+```
+
+##### **3.5 Creating a Pandas DataFrame**
+
+Now that we have the data, we can create a pandas DataFrame to organize it.
+
+```python
+# Create a DataFrame
+df = pd.DataFrame({
+    'Country': countries,
+    'Abbreviation': abbreviations,
+    'Currency': currencies,
+    'Rate': rates
+})
+
+# Display the DataFrame
+print(df)
+```
+
+##### **3.6 Saving the Data to a JSON File**
+
+Finally, let's save the DataFrame to a JSON file for further use.
+
+```python
+# Save the DataFrame to a JSON file
+df.to_json('exchange_rates.json', orient='records', indent=4)
+
+print("Data has been saved to exchange_rates.json")
+```
+
+---
+
+### **4. Summary**
+
+In this section, you learned how to:
+1. Inspect a webpage to locate a table for scraping.
+2. Write a Python script to scrape data from the table using `requests` and `BeautifulSoup`.
+3. Store the scraped data in a pandas DataFrame.
+4. Save the DataFrame to a JSON file.
+
+This basic approach to scraping tables can be applied to many other websites, allowing you to automate the extraction of tabular data for analysis, reporting, or other applications.
+
+---
+
+::: {.callout-tip}
+## Tip: Handling Changes in Webpage Structure
+Websites can change their HTML structure over time, which may break your scraper. To maintain your scraping scripts, periodically check the structure of the pages you scrape and update your code as needed.
+:::
+
+In the next section, we will explore how to automate this scraping process using GitHub Actions, enabling you to keep your data up-to-date without manual intervention.

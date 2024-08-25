@@ -1,0 +1,69 @@
+### **Introduction and Purpose**
+
+---
+
+Welcome to the Web Scraping course, where we embark on a journey from the basics of web scraping to the development of a fully automated, interactive web application. This course is designed to provide you with a solid foundation in web scraping, combined with practical skills in Python programming, automation with GitHub Actions, and building dynamic web apps using Streamlit.
+
+#### **Course Objectives:**
+
+By the end of this course, you will be able to:
+
+1. **Set Up a Python Environment:**  
+   Learn how to create and manage a virtual environment using `venv`, ensuring that your web scraping projects are isolated and dependencies are handled efficiently. This step is crucial for maintaining clean, reproducible, and conflict-free projects.
+
+2. **Scrape Websites Efficiently:**  
+   Master the essential techniques for web scraping using Python libraries such as `requests` and `BeautifulSoup`. You’ll start by scraping simple websites, like `example.com`, and gradually move to more complex tasks, such as extracting structured data from tables on websites like the SARS exchange rates page.
+
+3. **Inspect and Analyze Web Pages:**  
+   Develop skills in inspecting web pages using tools like SelectorGadget, enabling you to identify the correct HTML elements and CSS selectors to target for scraping. Understanding the structure of a webpage is key to extracting the right data.
+
+4. **Automate Web Scraping Tasks:**  
+   Automate the scraping process by setting up a GitHub repository and creating a GitHub Action with a CRON job. This will allow you to schedule your scraper to run at specific intervals, ensuring your data remains current without manual intervention.
+
+5. **Build an Interactive Web Application:**  
+   Finally, you’ll use Streamlit to build a web application that leverages your scraped data. In this course, you'll create a currency conversion tool that updates in real-time with data scraped from the SARS website, demonstrating how scraping can be integrated into a practical, user-friendly tool.
+
+#### **Course Structure:**
+
+This course is divided into the following sections:
+
+1. **Getting Started:**  
+   - Set up your development environment with a virtual environment and install the necessary Python libraries (`requests`, `BeautifulSoup`).
+   - Detailed instructions are provided for both Windows and MacOS users.
+
+2. **Scraping `example.com`:**  
+   - A step-by-step guide to scraping a simple webpage.
+   - Introduction to using SelectorGadget for identifying HTML elements to scrape.
+
+3. **Scraping a Table from the SARS Website:**  
+   - Learn how to extract structured data from tables and save it locally.
+   - Troubleshoot common issues in scraping table data.
+
+4. **Automating Scraping with GitHub Actions:**  
+   - Automate your scraper to run on a schedule using GitHub Actions and CRON jobs.
+   - Monitor and manage the automated process effectively.
+
+5. **Building a Streamlit App:**  
+   - Develop an interactive Streamlit app for currency conversion, using the data you’ve scraped.
+   - Focus on creating a user-friendly interface and ensuring app responsiveness.
+
+---
+
+::: {.callout-note}
+**Note:** This course is designed to take you from the basics of web scraping to building an interactive application that automates scraping tasks and leverages the data in a practical tool. Whether you are a beginner in web scraping or looking to enhance your skills, this course will guide you through every step of the process.
+:::
+
+### **Getting the Most Out of This Course**
+
+- **Hands-On Learning:**  
+  Each section is designed with practical exercises. You’ll be writing and running Python code, inspecting web pages, and ultimately building a real-world application.
+
+- **Build as You Learn:**  
+  The course is structured to incrementally build up to a final project. By the end, you’ll not only have the knowledge but also a complete, functional app to showcase your new skills.
+
+- **Stay Curious:**  
+  Web scraping is a dynamic field with constantly evolving techniques and tools. Throughout the course, you’ll find links to further reading and advanced topics. Use these resources to deepen your understanding and explore new possibilities.
+
+---
+
+With that introduction, you're now ready to dive into the first section: **Getting Started**. Let's set up your environment and get you ready for the exciting tasks ahead!

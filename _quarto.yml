@@ -8,8 +8,10 @@ book:
   date: "8/25/2024"
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - 01-intro.qmd
+    - 02-virtual-envs.qmd
+    - 03-scraping-basics.qmd
+    - 04-scraping-sars.qmd
     - references.qmd
 
 bibliography: references.bib
@@ -19,4 +21,3 @@ format:
     theme: cosmo
   pdf:
     documentclass: scrreprt
-
