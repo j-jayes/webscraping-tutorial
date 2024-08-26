@@ -147,4 +147,12 @@ This basic approach to scraping tables can be applied to many other websites, al
 Websites can change their HTML structure over time, which may break your scraper. To maintain your scraping scripts, periodically check the structure of the pages you scrape and update your code as needed.
 :::
 
+::: {.callout-tip}
+
+**Task:** To practice scraping the SARS exchange rates table, run the provided code in your Python environment and examine the extracted data in the DataFrame. You can also open the `exchange_rates.json` file to view the saved data.
+
+Try to scrape a table on Wikipedia or another website of your choice if you want to extend yourself further.
+
+:::
+
 In the next section, we will explore how to automate this scraping process using GitHub Actions, enabling you to keep your data up-to-date without manual intervention.

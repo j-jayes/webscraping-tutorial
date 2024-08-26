@@ -23,35 +23,7 @@ By the end of this course, you will be able to:
 5. **Build an Interactive Web Application:**  
    Finally, you’ll use Streamlit to build a web application that leverages your scraped data. In this course, you'll create a currency conversion tool that updates in real-time with data scraped from the SARS website, demonstrating how scraping can be integrated into a practical, user-friendly tool.
 
-#### **Course Structure:**
-
-This course is divided into the following sections:
-
-1. **Getting Started:**  
-   - Set up your development environment with a virtual environment and install the necessary Python libraries (`requests`, `BeautifulSoup`).
-   - Detailed instructions are provided for both Windows and MacOS users.
-
-2. **Scraping `example.com`:**  
-   - A step-by-step guide to scraping a simple webpage.
-   - Introduction to using SelectorGadget for identifying HTML elements to scrape.
-
-3. **Scraping a Table from the SARS Website:**  
-   - Learn how to extract structured data from tables and save it locally.
-   - Troubleshoot common issues in scraping table data.
-
-4. **Automating Scraping with GitHub Actions:**  
-   - Automate your scraper to run on a schedule using GitHub Actions and CRON jobs.
-   - Monitor and manage the automated process effectively.
-
-5. **Building a Streamlit App:**  
-   - Develop an interactive Streamlit app for currency conversion, using the data you’ve scraped.
-   - Focus on creating a user-friendly interface and ensuring app responsiveness.
-
 ---
-
-::: {.callout-note}
-**Note:** This course is designed to take you from the basics of web scraping to building an interactive application that automates scraping tasks and leverages the data in a practical tool. Whether you are a beginner in web scraping or looking to enhance your skills, this course will guide you through every step of the process.
-:::
 
 ### **Getting the Most Out of This Course**
 

@@ -164,6 +164,10 @@ To scrape more complex websites, it’s essential to accurately identify the HTM
 3. **Refine Selection:**  
    If the initial selection is too broad or too narrow, you can click on additional elements to refine the selector. The goal is to create a selector that precisely targets the data you want to extract.
 
+Here is an example of using SelectorGadget to identify the CSS selector for a specific element on a webpage:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/l9KInPM-jSs?si=Zn92lEKexTmGwD_K&amp;controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ##### **4.3 Applying the Selector in Your Code**
 
 Once you have the CSS selector from SelectorGadget, you can use it in your `BeautifulSoup` code to target specific elements.
@@ -178,6 +182,14 @@ for element in selected_elements:
 Replace `'css-selector-from-selectorgadget'` with the actual selector provided by SelectorGadget.
 
 ---
+
+
+::: {.callout-tip}
+
+**Task:** To practice scraping a webpage, try scraping `example.com` using the code snippets provided. Inspect the HTML content of the page, extract specific elements like paragraphs, and experiment with different CSS selectors using SelectorGadget.
+
+:::
+
 
 ### **Conclusion**
 

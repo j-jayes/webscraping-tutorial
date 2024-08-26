@@ -182,7 +182,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#further-reading-and-resources" id="toc-further-reading-and-resources" class="nav-link active" data-scroll-target="#further-reading-and-resources"><span class="header-section-number">2.0.1</span> <strong>Further Reading and Resources</strong></a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -331,14 +337,38 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Note:</strong> Keeping your <code>requirements.txt</code> file up to date ensures that others can easily set up an identical environment for your project.</p>
+<p><strong>Note:</strong> Keeping your <code>requirements.txt</code> file up to date ensures that others can easily set up an identical environment for your project. Additionally, you should add your virtual environment to your <code>.gitignore</code> file to prevent it from being uploaded to GitHub. A <code>.gitignore</code> file is a text file that tells Git which files or directories to ignore in a project. This is useful for excluding files that are not necessary for others to see or use, such as your virtual environment, which can be recreated using the <code>requirements.txt</code> file.</p>
 </div>
 </div>
 <hr>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Task:</strong> To practice setting up a virtual environment and installing packages, create a new virtual environment named <code>.venv</code> and install the <code>requests</code> and <code>BeautifulSoup4</code> libraries. Verify that the packages are installed correctly by listing them using <code>pip list</code>.</p>
+</div>
+</div>
 <p>With your virtual environment set up and the necessary packages installed, you’re ready to start working on your web scraping project. In the next section, we’ll begin by scraping data from a simple webpage, <code>example.com</code>, and exploring how to use tools like SelectorGadget to identify the elements you need.</p>
-
-
+<hr>
 </section>
+</section>
+<section id="further-reading-and-resources" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="further-reading-and-resources"><span class="header-section-number">2.0.1</span> <strong>Further Reading and Resources</strong></h3>
+<p>To learn more about the importance and usage of virtual environments in Python, you can explore the following resources:</p>
+<ul>
+<li><strong><a href="https://realpython.com/python-virtual-environments-a-primer/">Python Virtual Environments: A Primer</a></strong> – A comprehensive guide on why and how to use virtual environments in Python.</li>
+<li><strong><a href="https://docs.python-guide.org/dev/virtualenvs/">The Hitchhiker’s Guide to Python: Virtual Environments</a></strong> – This guide covers the essentials of virtual environments and offers tips for managing them effectively.</li>
+<li><strong><a href="https://docs.python.org/3/library/venv.html">Python Documentation: venv</a></strong> – The official Python documentation for the <code>venv</code> module, including advanced usage and customization options.</li>
+</ul>
+<p>Understanding and effectively using virtual environments will significantly improve your workflow as a Python developer, ensuring that your projects remain organized, consistent, and free of dependency conflicts.</p>
+
+
 </section>
 
 </main> <!-- /main -->
