@@ -1,0 +1,207 @@
+# **Automating Scraping with GitHub Actions**
+
+---
+```{r}
+knitr::include_url("https://calmcode.io/course/github-actions/introduction", height = 1000)
+```
+
+
+In this section, we will explore how to automate the web scraping process using GitHub Actions. This includes understanding what GitHub Actions are, how to configure a workflow using YAML files, the role of CRON jobs in automation, and the benefits of running a scraping script on a server (or "someone else's computer").
+
+#### **1. What are GitHub Actions?**
+
+GitHub Actions is a powerful feature provided by GitHub that allows you to automate tasks directly from your GitHub repository. These tasks, known as **workflows**, can be triggered by specific events, such as pushing code to a repository, opening a pull request, or on a scheduled basis using CRON jobs.
+
+With GitHub Actions, you can automate a wide range of tasks, such as running tests, deploying applications, or in our case, executing a web scraping script regularly to ensure your data is always up-to-date.
+
+**Key Features of GitHub Actions:**
+- **CI/CD Automation:** Automate your continuous integration and continuous deployment (CI/CD) pipelines.
+- **Custom Workflows:** Define custom workflows to perform tasks automatically in response to GitHub events.
+- **Extensible:** Use pre-built actions from the GitHub Marketplace or write your own custom actions.
+
+---
+
+#### **2. Understanding YAML Files**
+
+To configure GitHub Actions, you use **YAML** files. YAML (YAML Ain't Markup Language) is a human-readable data format that's commonly used for configuration files. In the context of GitHub Actions, YAML files define the steps of your workflow, including when and how your tasks should be run.
+
+**Example YAML File Structure:**
+
+```yaml
+name: Web Scraping Automation
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # This runs the script daily at midnight
+
+jobs:
+  scrape-data:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4 pandas
+
+    - name: Run scraper
+      run: python scrape_sars.py
+```
+
+**Breaking Down the YAML File:**
+- **`name:`** This defines the name of the workflow (e.g., "Web Scraping Automation").
+- **`on:`** Specifies the event that triggers the workflow. In this case, `schedule` is used to run the workflow on a CRON schedule.
+- **`jobs:`** Defines one or more jobs that run as part of the workflow. Each job runs on a specified environment (e.g., `ubuntu-latest`).
+- **`steps:`** Lists the steps to be executed within the job, such as checking out the code, setting up Python, installing dependencies, and running the scraping script.
+
+---
+
+#### **3. What are CRON Jobs?**
+
+**CRON** is a time-based job scheduler in Unix-like operating systems. It allows you to run scripts or commands automatically at specified intervals. In the context of GitHub Actions, CRON jobs enable you to schedule workflows to run at specific times or intervals.
+
+**CRON Syntax:**
+- CRON syntax consists of five fields: `minute`, `hour`, `day of month`, `month`, and `day of week`.
+- For example, `0 0 * * *` means "run the script daily at midnight".
+
+**Common CRON Schedules:**
+- `0 0 * * *`: Every day at midnight.
+- `*/30 * * * *`: Every 30 minutes.
+- `0 12 * * 1-5`: Every weekday at 12:00 PM.
+
+Using CRON jobs with GitHub Actions allows you to automate tasks like scraping data at regular intervals without manual intervention.
+
+---
+
+#### **4. The Purpose of Running a Scraping Script on a Server**
+
+Running a scraping script on a server—essentially "someone else's computer"—has several advantages, especially when it comes to automation and reliability.
+
+**Why Use a Server for Scraping?**
+- **24/7 Availability:** Servers are typically always on and connected to the internet, meaning your scraping script can run continuously at scheduled intervals without needing your local machine to be on.
+- **Resource Efficiency:** By running the script on a server, you offload the computational work and resource consumption from your own machine.
+- **Automation:** Automating the scraping process on a server ensures that the script runs regularly without the need for manual intervention, keeping your data up-to-date.
+- **Centralized Management:** Managing the script from a centralized server (like GitHub Actions) allows for better version control, easier collaboration, and consistent execution environments.
+- **Scalability:** As your scraping tasks grow, running them on a server allows you to scale more efficiently, handling larger datasets and more frequent scraping without burdening your local resources.
+
+**Example Use Case:**
+Imagine you have a scraper that needs to gather exchange rate data daily from the SARS website. Instead of running this script manually every day on your computer, you set it up to run automatically using GitHub Actions. With CRON scheduling, the script will execute at the same time every day, fetch the data, and store it in your repository, ready for analysis or further processing.
+
+---
+
+### **Automating Data Addition to Your Repository with GitHub Actions**
+
+---
+
+To fully automate the process of scraping data and adding it to your GitHub repository, there are several important steps to follow. This section will guide you through configuring your GitHub repository settings and modifying your YAML workflow file to ensure that your scraping script not only runs on a schedule but also updates your repository with the latest data.
+
+#### **1. Configuring GitHub Repository Settings**
+
+Before your GitHub Actions workflow can push changes to your repository, you need to adjust the repository settings to allow the actions to write data.
+
+##### **Steps to Configure Repository Settings:**
+
+1. **Navigate to Your Repository Settings:**
+   - Go to your GitHub repository.
+   - Click on the "Settings" tab.
+
+2. **Enable GitHub Actions Permissions:**
+   - In the left sidebar, select "Actions."
+   - Under "General" settings, find the "Workflow permissions" section.
+   - Select **"Read and write permissions."** This allows GitHub Actions to commit changes to your repository.
+   - Ensure the option **"Allow GitHub Actions to create and approve pull requests"** is also enabled if you plan to use this feature.
+
+3. **Save Changes:**
+   - Click "Save" to apply these settings.
+
+---
+
+#### **2. Modifying the YAML Workflow File**
+
+Once your repository is configured, you need to adjust your YAML workflow file to automate the process of pulling the latest data, adding the new scraped data, and pushing the changes back to the repository.
+
+##### **Steps in the YAML Workflow File:**
+
+Here’s an example of how you can modify your YAML file:
+
+```yaml
+name: Web Scraping Automation
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Run daily at midnight
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4 pandas
+
+    - name: Run scraper
+      run: python scrape_sars.py
+
+    - name: Pull latest changes
+      run: git pull origin main
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add .
+        git commit -m "Updated exchange rates on $(date)"
+        git push origin main
+```
+
+**Explanation of the YAML File:**
+
+- **`name: Web Scraping Automation`**: This is the name of the workflow.
+- **`on: schedule:`**: This specifies that the workflow runs on a CRON schedule, set to run daily at midnight.
+- **`scrape-and-update:`**: The job defined here will run on the latest Ubuntu environment.
+- **`Checkout the repository:`**: This step checks out the code from your repository so that the action can make changes to it.
+- **`Set up Python:`**: This sets up the Python environment to run your scraping script.
+- **`Install dependencies:`**: Installs the necessary Python libraries for the scraping script.
+- **`Run scraper:`**: This runs the `scrape_sars.py` script, which scrapes the data and saves it locally.
+- **`Pull latest changes:`**: This step ensures that the workflow pulls the latest version of the repository before making any changes. This prevents conflicts if other changes have been made to the repository since the last run.
+- **`Commit and push changes:`**: This step adds the new scraped data, commits it with a custom message (including the date), and pushes it back to the main branch of the repository.
+
+##### **Custom Commit Message:**
+- The commit message `git commit -m "Updated exchange rates on $(date)"` includes a timestamp, making it clear when the data was last updated. You can customize this message to include a salutation or any other information you find relevant.
+
+---
+
+#### **3. Reusing and Repurposing YAML Files**
+
+While YAML files are powerful and allow for a high degree of customization, they can be complex and verbose. It's important to understand that:
+
+- **You Don't Need to Master YAML Syntax:** Most users don't need to write YAML files from scratch. Instead, you can reuse and repurpose existing YAML files, modifying them to suit your specific needs.
+- **Leverage Existing Templates:** GitHub provides many examples and templates in the GitHub Actions marketplace. These can be adapted to automate tasks like running tests, deploying code, or, as we've seen, scraping and updating data.
+- **Focus on Understanding Key Concepts:** The key is to understand the core concepts, such as how to trigger actions (`on:`), what jobs and steps do, and how to manage dependencies. With this understanding, you'll be able to modify YAML files effectively without needing to write them from scratch.
+
+---
+
+### **Summary**
+
+By configuring your GitHub repository and setting up a properly structured YAML workflow file, you can fully automate the process of scraping data and updating your repository. This approach ensures that your data is always current, with minimal manual intervention.
+
+Most importantly, remember that while YAML files are a powerful tool for automation, the focus should be on reusing and adapting existing templates rather than writing them from scratch. This allows you to automate tasks efficiently without needing deep expertise in YAML syntax.
+
+In the next section, we'll guide you through building a Streamlit app that leverages this automated data to create a dynamic, interactive user interface.

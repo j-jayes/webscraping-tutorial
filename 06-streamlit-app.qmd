@@ -1,0 +1,135 @@
+### **Stretch Goal: Building a Streamlit Currency Conversion App**
+
+---
+```{r}
+knitr::include_url("https://calmcode.io/course/streamlit/hello-world", height = 1000)
+```
+
+
+As a stretch goal, you can take your web scraping project to the next level by building a dynamic and interactive web application using Streamlit. This app will read in the latest exchange rate data from your public GitHub repository and allow users to convert various amounts of foreign currencies into South African Rands (ZAR) using the most recent exchange rates.
+
+#### **1. Project Overview**
+
+The goal of this task is to create a user-friendly web app where users can:
+- Select a foreign currency from a dropdown list.
+- Enter an amount in the selected foreign currency.
+- Instantly see the equivalent amount in South African Rands based on the latest exchange rates.
+
+This app will pull the exchange rate data directly from your GitHub repository, ensuring that it always uses the most up-to-date information scraped and stored by your automated GitHub Actions workflow.
+
+---
+
+#### **2. Steps to Build the Streamlit App**
+
+##### **2.1 Set Up the Streamlit Environment**
+
+First, you need to set up your Python environment for Streamlit:
+
+1. **Install Streamlit:**
+   If you haven’t already installed Streamlit, do so by running:
+
+   ```bash
+   pip install streamlit
+   ```
+
+2. **Start a New Streamlit App:**
+   Create a new Python file, for example, `app.py`, where you will write your Streamlit code.
+
+##### **2.2 Fetch the Data from GitHub**
+
+Your app will need to fetch the latest exchange rate data stored in your public GitHub repository. Here’s how you can do that:
+
+1. **Import Necessary Libraries:**
+
+   ```python
+   import streamlit as st
+   import pandas as pd
+   import requests
+   import json
+   ```
+
+2. **Fetch the JSON Data from GitHub:**
+
+   Use the `requests` library to fetch the JSON file from your repository:
+
+   ```python
+   url = "https://raw.githubusercontent.com/your-username/your-repo/main/exchange_rates.json"
+   response = requests.get(url)
+   data = response.json()
+   ```
+
+3. **Load the Data into a DataFrame:**
+
+   Convert the JSON data into a pandas DataFrame for easy manipulation:
+
+   ```python
+   df = pd.DataFrame(data)
+   ```
+
+##### **2.3 Build the Streamlit User Interface**
+
+Next, you’ll build the interface where users can interact with the app:
+
+1. **Create the Dropdown for Currency Selection:**
+
+   ```python
+   st.title("Currency to ZAR Converter")
+   
+   currencies = df['Currency'].tolist()
+   selected_currency = st.selectbox("Select a currency", currencies)
+   ```
+
+2. **Input Field for the Amount:**
+
+   Allow the user to enter the amount they want to convert:
+
+   ```python
+   amount = st.number_input(f"Enter amount in {selected_currency}", min_value=0.0)
+   ```
+
+3. **Calculate the Equivalent in Rands:**
+
+   Fetch the exchange rate for the selected currency and calculate the equivalent amount in Rands:
+
+   ```python
+   if selected_currency:
+       rate = df.loc[df['Currency'] == selected_currency, 'Rate'].values[0]
+       equivalent_in_rands = amount / rate
+       st.write(f"{amount} {selected_currency} is equivalent to {equivalent_in_rands:.2f} ZAR")
+   ```
+
+##### **2.4 Running the Streamlit App**
+
+To run the app locally:
+
+```bash
+streamlit run app.py
+```
+
+This will open the app in your browser, where you can test the currency conversion functionality.
+
+---
+
+#### **3. Leveraging ChatGPT for Assistance**
+
+Building a Streamlit app can be a complex task, especially if you're new to web development or Streamlit. Here’s how ChatGPT can assist you:
+
+1. **Guidance on Streamlit Components:**  
+   ChatGPT can provide you with explanations, examples, and best practices for using various Streamlit components like buttons, sliders, and charts.
+
+2. **Debugging and Troubleshooting:**  
+   If you encounter errors or bugs while building your app, ChatGPT can help you troubleshoot and debug your code.
+
+3. **Enhancing the App:**  
+   ChatGPT can suggest features to enhance your app, such as adding additional functionalities like a currency exchange history chart, or customizing the app’s appearance.
+
+4. **Learning More About APIs:**  
+   If you want to expand your app to include more features, such as fetching real-time data from a currency exchange API, ChatGPT can guide you through the process of integrating external APIs into your app.
+
+---
+
+### **Conclusion**
+
+This stretch goal allows you to take full advantage of the data you've scraped and automated through GitHub Actions. By building a Streamlit app, you create a practical tool that can convert currencies to South African Rands, using the most recent exchange rates available.
+
+Not only does this task solidify your understanding of web scraping, automation, and data handling, but it also introduces you to web app development with Streamlit. And remember, ChatGPT is here to support you throughout the process, offering guidance, solutions, and enhancements to make your app even better. Good luck, and enjoy the creative process of building your currency converter!

@@ -12,6 +12,7 @@ book:
     - 02-virtual-envs.qmd
     - 03-scraping-basics.qmd
     - 04-scraping-sars.qmd
+    - 05-github-actions.qmd
     - references.qmd
 
 bibliography: references.bib

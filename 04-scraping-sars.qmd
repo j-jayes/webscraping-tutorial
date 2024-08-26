@@ -1,4 +1,4 @@
-### **Scraping a Table from the SARS Website**
+# **Scraping a Table from the SARS Website**
 
 ---
 

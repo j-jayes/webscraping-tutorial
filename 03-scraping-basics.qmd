@@ -2,6 +2,11 @@
 
 ---
 
+```{r}
+knitr::include_url("https://calmcode.io/course/gazpacho/introduction", height = 1000)
+```
+
+
 In this section, we will dive into the fundamentals of web scraping and provide a hands-on example by scraping a simple webpage, `example.com`. This exercise will help you understand how to send HTTP requests, parse HTML content, and extract specific data from a webpage.
 
 #### **1. What is Web Scraping?**
