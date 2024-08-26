@@ -223,6 +223,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="inspecting-the-webpage" class="level4" data-number="4.0.0.1">
 <h4 data-number="4.0.0.1" class="anchored" data-anchor-id="inspecting-the-webpage"><span class="header-section-number">4.0.0.1</span> <strong>1. Inspecting the Webpage</strong></h4>
 <p>The first step in web scraping is to inspect the webpage to identify the structure and the elements you want to extract. The SARS Rates of Exchange page contains a table with exchange rates for various currencies. This table is defined using standard HTML <code>&lt;table&gt;</code> tags, with each row (<code>&lt;tr&gt;</code>) containing data for a different currency.</p>
+<p>Here is a screenshot of the exchange rates table on the SARS website:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="assets/screenshots/sars.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Screenshot from <a href="https://tools.sars.gov.za/rex/Rates/Default.aspx">SARS website</a></figcaption>
+</figure>
+</div>
 <p>To scrape this table, we’ll focus on extracting the following data for each currency: - Country name - Abbreviation - Currency name - Exchange rate</p>
 <p>The HTML structure of the table includes: - A table element with class <code>table table-bordered gvExt</code>. - Each row (<code>&lt;tr&gt;</code>) contains several cells (<code>&lt;td&gt;</code>), where: - The first cell contains the country flag (which we will ignore). - The second cell contains the country name. - The third cell contains the currency abbreviation. - The fourth cell contains the currency name. - The fifth cell contains the exchange rate.</p>
 <hr>

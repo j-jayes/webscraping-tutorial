@@ -8,6 +8,10 @@ In this section, you will learn how to scrape data from a table on the SARS webs
 
 The first step in web scraping is to inspect the webpage to identify the structure and the elements you want to extract. The SARS Rates of Exchange page contains a table with exchange rates for various currencies. This table is defined using standard HTML `<table>` tags, with each row (`<tr>`) containing data for a different currency.
 
+Here is a screenshot of the exchange rates table on the SARS website:
+
+![Screenshot from [SARS website](https://tools.sars.gov.za/rex/Rates/Default.aspx)](assets/screenshots/sars.png)
+
 To scrape this table, we'll focus on extracting the following data for each currency:
 - Country name
 - Abbreviation

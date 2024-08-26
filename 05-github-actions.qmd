@@ -67,6 +67,12 @@ jobs:
 - **`jobs:`** Defines one or more jobs that run as part of the workflow. Each job runs on a specified environment (e.g., `ubuntu-latest`).
 - **`steps:`** Lists the steps to be executed within the job, such as checking out the code, setting up Python, installing dependencies, and running the scraping script.
 
+::: {.callout-warning}
+
+**Question:** What might not work as we expect in the YAML file above, if we wanted to update the data? Think about the github actions runner as your own computer. What might be the issue? What might you still have to do so that you can access the latest data?
+
+:::
+
 ---
 
 #### **3. What are CRON Jobs?**
