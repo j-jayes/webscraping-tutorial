@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Webscraping Tutorial - 5&nbsp; Automating Scraping with GitHub Actions</title>
+<title>Webscraping Tutorial - 5&nbsp; Automating Scraping</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -64,8 +64,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./references.html" rel="next">
+<link href="./06-streamlit-app.html" rel="next">
 <link href="./04-scraping-sars.html" rel="prev">
+<link href="./assets/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -97,6 +98,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="assets/styles.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -109,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-github-actions.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">**Automating Scraping with GitHub Actions**</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-github-actions.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">**Automating Scraping**</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -149,25 +151,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-virtual-envs.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>Getting Started: Setting Up a Virtual Environment and Installing Packages</strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>Virtual Environments</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-scraping-basics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>Scraping Basics and Scraping <code>example.com</code></strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title"><strong>Scraping Basics</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-scraping-sars.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title"><strong>Scraping a Table from the SARS Website</strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title"><strong>Scraping a Table</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-github-actions.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title"><strong>Automating Scraping with GitHub Actions</strong></span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title"><strong>Automating Scraping</strong></span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-streamlit-app.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title"><strong>Streamlit App</strong></span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -196,7 +204,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title"><strong>Automating Scraping with GitHub Actions</strong></span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title"><strong>Automating Scraping</strong></span></h1>
 </div>
 
 
@@ -211,8 +219,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<section id="understanding-yaml-files" class="level4" data-number="5.0.0.1">
-<h4 data-number="5.0.0.1" class="anchored" data-anchor-id="understanding-yaml-files"><span class="header-section-number">5.0.0.1</span> <strong>2. Understanding YAML Files</strong></h4>
+<div id="fig-05" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div class="video-container">
+<a href="https://calmcode.io/course/github-actions/introduction"> <img src="assets/screenshots/05.png" alt="Video Thumbnail" class="figure-img">
+<div class="play-button">
+▶
+</div>
+</a><p><a href="https://calmcode.io/course/github-actions/introduction"></a></p>
+</div>
+<figcaption class="figure-caption">Figure&nbsp;5.1: See this video on <a href="https://calmcode.io/course/github-actions/introduction">calmcode.io - an explanation of github actions</a>.</figcaption>
+</figure>
+</div>
+<p>In this section, we will explore how to automate the web scraping process using GitHub Actions. This includes understanding what GitHub Actions are, how to configure a workflow using YAML files, the role of CRON jobs in automation, and the benefits of running a scraping script on a server (or “someone else’s computer”).</p>
+<section id="what-are-github-actions" class="level4" data-number="5.0.0.1">
+<h4 data-number="5.0.0.1" class="anchored" data-anchor-id="what-are-github-actions"><span class="header-section-number">5.0.0.1</span> <strong>1. What are GitHub Actions?</strong></h4>
+<p>GitHub Actions is a powerful feature provided by GitHub that allows you to automate tasks directly from your GitHub repository. These tasks, known as <strong>workflows</strong>, can be triggered by specific events, such as pushing code to a repository, opening a pull request, or on a scheduled basis using CRON jobs.</p>
+<p>With GitHub Actions, you can automate a wide range of tasks, such as running tests, deploying applications, or in our case, executing a web scraping script regularly to ensure your data is always up-to-date.</p>
+<p><strong>Key Features of GitHub Actions:</strong> - <strong>CI/CD Automation:</strong> Automate your continuous integration and continuous deployment (CI/CD) pipelines. - <strong>Custom Workflows:</strong> Define custom workflows to perform tasks automatically in response to GitHub events. - <strong>Extensible:</strong> Use pre-built actions from the GitHub Marketplace or write your own custom actions.</p>
+<hr>
+</section>
+<section id="understanding-yaml-files" class="level4" data-number="5.0.0.2">
+<h4 data-number="5.0.0.2" class="anchored" data-anchor-id="understanding-yaml-files"><span class="header-section-number">5.0.0.2</span> <strong>2. Understanding YAML Files</strong></h4>
 <p>To configure GitHub Actions, you use <strong>YAML</strong> files. YAML (YAML Ain’t Markup Language) is a human-readable data format that’s commonly used for configuration files. In the context of GitHub Actions, YAML files define the steps of your workflow, including when and how your tasks should be run.</p>
 <p><strong>Example YAML File Structure:</strong></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">name</span><span class="kw">:</span><span class="at"> Web Scraping Automation</span></span>
@@ -243,16 +271,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Breaking Down the YAML File:</strong> - <strong><code>name:</code></strong> This defines the name of the workflow (e.g., “Web Scraping Automation”). - <strong><code>on:</code></strong> Specifies the event that triggers the workflow. In this case, <code>schedule</code> is used to run the workflow on a CRON schedule. - <strong><code>jobs:</code></strong> Defines one or more jobs that run as part of the workflow. Each job runs on a specified environment (e.g., <code>ubuntu-latest</code>). - <strong><code>steps:</code></strong> Lists the steps to be executed within the job, such as checking out the code, setting up Python, installing dependencies, and running the scraping script.</p>
 <hr>
 </section>
-<section id="what-are-cron-jobs" class="level4" data-number="5.0.0.2">
-<h4 data-number="5.0.0.2" class="anchored" data-anchor-id="what-are-cron-jobs"><span class="header-section-number">5.0.0.2</span> <strong>3. What are CRON Jobs?</strong></h4>
+<section id="what-are-cron-jobs" class="level4" data-number="5.0.0.3">
+<h4 data-number="5.0.0.3" class="anchored" data-anchor-id="what-are-cron-jobs"><span class="header-section-number">5.0.0.3</span> <strong>3. What are CRON Jobs?</strong></h4>
 <p><strong>CRON</strong> is a time-based job scheduler in Unix-like operating systems. It allows you to run scripts or commands automatically at specified intervals. In the context of GitHub Actions, CRON jobs enable you to schedule workflows to run at specific times or intervals.</p>
 <p><strong>CRON Syntax:</strong> - CRON syntax consists of five fields: <code>minute</code>, <code>hour</code>, <code>day of month</code>, <code>month</code>, and <code>day of week</code>. - For example, <code>0 0 * * *</code> means “run the script daily at midnight”.</p>
 <p><strong>Common CRON Schedules:</strong> - <code>0 0 * * *</code>: Every day at midnight. - <code>*/30 * * * *</code>: Every 30 minutes. - <code>0 12 * * 1-5</code>: Every weekday at 12:00 PM.</p>
 <p>Using CRON jobs with GitHub Actions allows you to automate tasks like scraping data at regular intervals without manual intervention.</p>
 <hr>
 </section>
-<section id="the-purpose-of-running-a-scraping-script-on-a-server" class="level4" data-number="5.0.0.3">
-<h4 data-number="5.0.0.3" class="anchored" data-anchor-id="the-purpose-of-running-a-scraping-script-on-a-server"><span class="header-section-number">5.0.0.3</span> <strong>4. The Purpose of Running a Scraping Script on a Server</strong></h4>
+<section id="the-purpose-of-running-a-scraping-script-on-a-server" class="level4" data-number="5.0.0.4">
+<h4 data-number="5.0.0.4" class="anchored" data-anchor-id="the-purpose-of-running-a-scraping-script-on-a-server"><span class="header-section-number">5.0.0.4</span> <strong>4. The Purpose of Running a Scraping Script on a Server</strong></h4>
 <p>Running a scraping script on a server—essentially “someone else’s computer”—has several advantages, especially when it comes to automation and reliability.</p>
 <p><strong>Why Use a Server for Scraping?</strong> - <strong>24/7 Availability:</strong> Servers are typically always on and connected to the internet, meaning your scraping script can run continuously at scheduled intervals without needing your local machine to be on. - <strong>Resource Efficiency:</strong> By running the script on a server, you offload the computational work and resource consumption from your own machine. - <strong>Automation:</strong> Automating the scraping process on a server ensures that the script runs regularly without the need for manual intervention, keeping your data up-to-date. - <strong>Centralized Management:</strong> Managing the script from a centralized server (like GitHub Actions) allows for better version control, easier collaboration, and consistent execution environments. - <strong>Scalability:</strong> As your scraping tasks grow, running them on a server allows you to scale more efficiently, handling larger datasets and more frequent scraping without burdening your local resources.</p>
 <p><strong>Example Use Case:</strong> Imagine you have a scraper that needs to gather exchange rate data daily from the SARS website. Instead of running this script manually every day on your computer, you set it up to run automatically using GitHub Actions. With CRON scheduling, the script will execute at the same time every day, fetch the data, and store it in your repository, ready for analysis or further processing.</p>
@@ -610,12 +638,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./04-scraping-sars.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title"><strong>Scraping a Table from the SARS Website</strong></span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title"><strong>Scraping a Table</strong></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./references.html" class="pagination-link">
-        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./06-streamlit-app.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title"><strong>Streamlit App</strong></span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

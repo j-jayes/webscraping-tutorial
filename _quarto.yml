@@ -5,6 +5,7 @@ project:
 book:
   title: "Webscraping Tutorial"
   author: "Jonathan Jayes"
+  favicon: assets/favicon.ico
   date: "8/25/2024"
   chapters:
     - index.qmd
@@ -13,12 +14,16 @@ book:
     - 03-scraping-basics.qmd
     - 04-scraping-sars.qmd
     - 05-github-actions.qmd
+    - 06-streamlit-app.qmd
     - references.qmd
 
 bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
+    theme: 
+    - cosmo
+    - assets/custom.scss
+    css: assets/styles.css
   pdf:
     documentclass: scrreprt

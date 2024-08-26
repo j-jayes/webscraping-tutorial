@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Webscraping Tutorial - 1&nbsp; Introduction and Purpose</title>
+<title>Webscraping Tutorial - 6&nbsp; Streamlit App</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,8 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./02-virtual-envs.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./05-github-actions.html" rel="prev">
 <link href="./assets/favicon.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -77,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">**Introduction and Purpose**</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-streamlit-app.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">**Streamlit App**</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -110,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./01-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction and Purpose</strong></span></span></a>
   </div>
 </li>
@@ -140,7 +174,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-streamlit-app.html" class="sidebar-item-text sidebar-link">
+  <a href="./06-streamlit-app.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title"><strong>Streamlit App</strong></span></span></a>
   </div>
 </li>
@@ -160,7 +194,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#getting-the-most-out-of-this-course" id="toc-getting-the-most-out-of-this-course" class="nav-link active" data-scroll-target="#getting-the-most-out-of-this-course"><span class="header-section-number">1.0.1</span> <strong>Getting the Most Out of This Course</strong></a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link active" data-scroll-target="#conclusion"><span class="header-section-number">6.0.1</span> <strong>Conclusion</strong></a></li>
   </ul>
 </nav>
     </div>
@@ -169,7 +203,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title"><strong>Introduction and Purpose</strong></span></h1>
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title"><strong>Streamlit App</strong></span></h1>
 </div>
 
 
@@ -184,37 +218,103 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>Stretch Goal: Building a Streamlit Currency Conversion App</p>
+<div id="fig-06" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div class="video-container">
+<a href="https://calmcode.io/course/streamlit/hello-world"> <img src="assets/screenshots/06.png" alt="Video Thumbnail" class="figure-img">
+<div class="play-button">
+▶
+</div>
+</a><p><a href="https://calmcode.io/course/streamlit/hello-world"></a></p>
+</div>
+<figcaption class="figure-caption">Figure&nbsp;6.1: See this video on <a href="https://calmcode.io/course/streamlit/hello-world">calmcode.io - an explanation the Streamlit library</a>.</figcaption>
+</figure>
+</div>
+<p>As a stretch goal, you can take your web scraping project to the next level by building a dynamic and interactive web application using Streamlit. This app will read in the latest exchange rate data from your public GitHub repository and allow users to convert various amounts of foreign currencies into South African Rands (ZAR) using the most recent exchange rates.</p>
+<section id="project-overview" class="level4" data-number="6.0.0.1">
+<h4 data-number="6.0.0.1" class="anchored" data-anchor-id="project-overview"><span class="header-section-number">6.0.0.1</span> <strong>1. Project Overview</strong></h4>
+<p>The goal of this task is to create a user-friendly web app where users can: - Select a foreign currency from a dropdown list. - Enter an amount in the selected foreign currency. - Instantly see the equivalent amount in South African Rands based on the latest exchange rates.</p>
+<p>This app will pull the exchange rate data directly from your GitHub repository, ensuring that it always uses the most up-to-date information scraped and stored by your automated GitHub Actions workflow.</p>
 <hr>
-<p>Welcome to the Web Scraping course, where we embark on a journey from the basics of web scraping to the development of a fully automated, interactive web application. This course is designed to provide you with a solid foundation in web scraping, combined with practical skills in Python programming, automation with GitHub Actions, and building dynamic web apps using Streamlit.</p>
-<section id="course-objectives" class="level4" data-number="1.0.0.1">
-<h4 data-number="1.0.0.1" class="anchored" data-anchor-id="course-objectives"><span class="header-section-number">1.0.0.1</span> <strong>Course Objectives:</strong></h4>
-<p>By the end of this course, you will be able to:</p>
+</section>
+<section id="steps-to-build-the-streamlit-app" class="level4" data-number="6.0.0.2">
+<h4 data-number="6.0.0.2" class="anchored" data-anchor-id="steps-to-build-the-streamlit-app"><span class="header-section-number">6.0.0.2</span> <strong>2. Steps to Build the Streamlit App</strong></h4>
+<section id="set-up-the-streamlit-environment" class="level5" data-number="6.0.0.2.1">
+<h5 data-number="6.0.0.2.1" class="anchored" data-anchor-id="set-up-the-streamlit-environment"><span class="header-section-number">6.0.0.2.1</span> <strong>2.1 Set Up the Streamlit Environment</strong></h5>
+<p>First, you need to set up your Python environment for Streamlit:</p>
 <ol type="1">
-<li><p><strong>Set Up a Python Environment:</strong><br>
-Learn how to create and manage a virtual environment using <code>venv</code>, ensuring that your web scraping projects are isolated and dependencies are handled efficiently. This step is crucial for maintaining clean, reproducible, and conflict-free projects.</p></li>
-<li><p><strong>Scrape Websites Efficiently:</strong><br>
-Master the essential techniques for web scraping using Python libraries such as <code>requests</code> and <code>BeautifulSoup</code>. You’ll start by scraping simple websites, like <code>example.com</code>, and gradually move to more complex tasks, such as extracting structured data from tables on websites like the SARS exchange rates page.</p></li>
-<li><p><strong>Inspect and Analyze Web Pages:</strong><br>
-Develop skills in inspecting web pages using tools like SelectorGadget, enabling you to identify the correct HTML elements and CSS selectors to target for scraping. Understanding the structure of a webpage is key to extracting the right data.</p></li>
-<li><p><strong>Automate Web Scraping Tasks:</strong><br>
-Automate the scraping process by setting up a GitHub repository and creating a GitHub Action with a CRON job. This will allow you to schedule your scraper to run at specific intervals, ensuring your data remains current without manual intervention.</p></li>
-<li><p><strong>Build an Interactive Web Application:</strong><br>
-Finally, you’ll use Streamlit to build a web application that leverages your scraped data. In this course, you’ll create a currency conversion tool that updates in real-time with data scraped from the SARS website, demonstrating how scraping can be integrated into a practical, user-friendly tool.</p></li>
+<li><p><strong>Install Streamlit:</strong> If you haven’t already installed Streamlit, do so by running:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install streamlit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Start a New Streamlit App:</strong> Create a new Python file, for example, <code>app.py</code>, where you will write your Streamlit code.</p></li>
+</ol>
+</section>
+<section id="fetch-the-data-from-github" class="level5" data-number="6.0.0.2.2">
+<h5 data-number="6.0.0.2.2" class="anchored" data-anchor-id="fetch-the-data-from-github"><span class="header-section-number">6.0.0.2.2</span> <strong>2.2 Fetch the Data from GitHub</strong></h5>
+<p>Your app will need to fetch the latest exchange rate data stored in your public GitHub repository. Here’s how you can do that:</p>
+<ol type="1">
+<li><p><strong>Import Necessary Libraries:</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> streamlit <span class="im">as</span> st</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Fetch the JSON Data from GitHub:</strong></p>
+<p>Use the <code>requests</code> library to fetch the JSON file from your repository:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/your-username/your-repo/main/exchange_rates.json"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> requests.get(url)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> response.json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Load the Data into a DataFrame:</strong></p>
+<p>Convert the JSON data into a pandas DataFrame for easy manipulation:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="build-the-streamlit-user-interface" class="level5" data-number="6.0.0.2.3">
+<h5 data-number="6.0.0.2.3" class="anchored" data-anchor-id="build-the-streamlit-user-interface"><span class="header-section-number">6.0.0.2.3</span> <strong>2.3 Build the Streamlit User Interface</strong></h5>
+<p>Next, you’ll build the interface where users can interact with the app:</p>
+<ol type="1">
+<li><p><strong>Create the Dropdown for Currency Selection:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>st.title(<span class="st">"Currency to ZAR Converter"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>currencies <span class="op">=</span> df[<span class="st">'Currency'</span>].tolist()</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>selected_currency <span class="op">=</span> st.selectbox(<span class="st">"Select a currency"</span>, currencies)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Input Field for the Amount:</strong></p>
+<p>Allow the user to enter the amount they want to convert:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>amount <span class="op">=</span> st.number_input(<span class="ss">f"Enter amount in </span><span class="sc">{</span>selected_currency<span class="sc">}</span><span class="ss">"</span>, min_value<span class="op">=</span><span class="fl">0.0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Calculate the Equivalent in Rands:</strong></p>
+<p>Fetch the exchange rate for the selected currency and calculate the equivalent amount in Rands:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> selected_currency:</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    rate <span class="op">=</span> df.loc[df[<span class="st">'Currency'</span>] <span class="op">==</span> selected_currency, <span class="st">'Rate'</span>].values[<span class="dv">0</span>]</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    equivalent_in_rands <span class="op">=</span> amount <span class="op">/</span> rate</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    st.write(<span class="ss">f"</span><span class="sc">{</span>amount<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>selected_currency<span class="sc">}</span><span class="ss"> is equivalent to </span><span class="sc">{</span>equivalent_in_rands<span class="sc">:.2f}</span><span class="ss"> ZAR"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+</ol>
+</section>
+<section id="running-the-streamlit-app" class="level5" data-number="6.0.0.2.4">
+<h5 data-number="6.0.0.2.4" class="anchored" data-anchor-id="running-the-streamlit-app"><span class="header-section-number">6.0.0.2.4</span> <strong>2.4 Running the Streamlit App</strong></h5>
+<p>To run the app locally:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">streamlit</span> run app.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will open the app in your browser, where you can test the currency conversion functionality.</p>
+<hr>
+</section>
+</section>
+<section id="leveraging-chatgpt-for-assistance" class="level4" data-number="6.0.0.3">
+<h4 data-number="6.0.0.3" class="anchored" data-anchor-id="leveraging-chatgpt-for-assistance"><span class="header-section-number">6.0.0.3</span> <strong>3. Leveraging ChatGPT for Assistance</strong></h4>
+<p>Building a Streamlit app can be a complex task, especially if you’re new to web development or Streamlit. Here’s how ChatGPT can assist you:</p>
+<ol type="1">
+<li><p><strong>Guidance on Streamlit Components:</strong><br>
+ChatGPT can provide you with explanations, examples, and best practices for using various Streamlit components like buttons, sliders, and charts.</p></li>
+<li><p><strong>Debugging and Troubleshooting:</strong><br>
+If you encounter errors or bugs while building your app, ChatGPT can help you troubleshoot and debug your code.</p></li>
+<li><p><strong>Enhancing the App:</strong><br>
+ChatGPT can suggest features to enhance your app, such as adding additional functionalities like a currency exchange history chart, or customizing the app’s appearance.</p></li>
+<li><p><strong>Learning More About APIs:</strong><br>
+If you want to expand your app to include more features, such as fetching real-time data from a currency exchange API, ChatGPT can guide you through the process of integrating external APIs into your app.</p></li>
 </ol>
 <hr>
 </section>
-<section id="getting-the-most-out-of-this-course" class="level3" data-number="1.0.1">
-<h3 data-number="1.0.1" class="anchored" data-anchor-id="getting-the-most-out-of-this-course"><span class="header-section-number">1.0.1</span> <strong>Getting the Most Out of This Course</strong></h3>
-<ul>
-<li><p><strong>Hands-On Learning:</strong><br>
-Each section is designed with practical exercises. You’ll be writing and running Python code, inspecting web pages, and ultimately building a real-world application.</p></li>
-<li><p><strong>Build as You Learn:</strong><br>
-The course is structured to incrementally build up to a final project. By the end, you’ll not only have the knowledge but also a complete, functional app to showcase your new skills.</p></li>
-<li><p><strong>Stay Curious:</strong><br>
-Web scraping is a dynamic field with constantly evolving techniques and tools. Throughout the course, you’ll find links to further reading and advanced topics. Use these resources to deepen your understanding and explore new possibilities.</p></li>
-</ul>
-<hr>
-<p>With that introduction, you’re now ready to dive into the first section: <strong>Getting Started</strong>. Let’s set up your environment and get you ready for the exciting tasks ahead!</p>
+<section id="conclusion" class="level3" data-number="6.0.1">
+<h3 data-number="6.0.1" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">6.0.1</span> <strong>Conclusion</strong></h3>
+<p>This stretch goal allows you to take full advantage of the data you’ve scraped and automated through GitHub Actions. By building a Streamlit app, you create a practical tool that can convert currencies to South African Rands, using the most recent exchange rates available.</p>
+<p>Not only does this task solidify your understanding of web scraping, automation, and data handling, but it also introduces you to web app development with Streamlit. And remember, ChatGPT is here to support you throughout the process, offering guidance, solutions, and enhancements to make your app even better. Good luck, and enjoy the creative process of building your currency converter!</p>
 
 
 </section>
@@ -455,13 +555,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Preface</span>
+      <a href="./05-github-actions.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title"><strong>Automating Scraping</strong></span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02-virtual-envs.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title"><strong>Virtual Environments</strong></span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

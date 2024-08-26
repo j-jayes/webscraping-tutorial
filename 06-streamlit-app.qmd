@@ -1,10 +1,18 @@
-### **Stretch Goal: Building a Streamlit Currency Conversion App**
+# **Streamlit App**
 
----
-```{r}
-knitr::include_url("https://calmcode.io/course/streamlit/hello-world", height = 1000)
-```
+Stretch Goal: Building a Streamlit Currency Conversion App
 
+::: {#fig-06}
+<div class="video-container">
+  <a href="https://calmcode.io/course/streamlit/hello-world">
+    <img src="assets/screenshots/06.png" alt="Video Thumbnail">
+    <div class="play-button">&#9654;</div>
+  </a>
+</div>
+
+See this video on [calmcode.io - an explanation the Streamlit library](https://calmcode.io/course/streamlit/hello-world).
+
+:::
 
 As a stretch goal, you can take your web scraping project to the next level by building a dynamic and interactive web application using Streamlit. This app will read in the latest exchange rate data from your public GitHub repository and allow users to convert various amounts of foreign currencies into South African Rands (ZAR) using the most recent exchange rates.
 

@@ -1,10 +1,17 @@
-# **Getting Started: Setting Up a Virtual Environment and Installing Packages**
+# **Virtual Environments**
 
 ---
 
-```{r}
-knitr::include_url("https://calmcode.io/course/virtualenv/intro", height = 1000)
-```
+::: {#fig-02}
+<div class="video-container">
+  <a href="https://calmcode.io/course/virtualenv/intro">
+    <img src="assets/screenshots/02.png" alt="Video Thumbnail">
+    <div class="play-button">&#9654;</div>
+  </a>
+</div>
+
+See this video on [calmcode.io - Setting Up a Virtual Environment](https://calmcode.io/course/virtualenv/intro).
+:::
 
 In this section, we will cover the essential steps to set up your Python development environment. Setting up a virtual environment ensures that your projects are isolated, allowing you to manage dependencies effectively without affecting your global Python installation. This is particularly important for maintaining a clean and conflict-free workspace.
 

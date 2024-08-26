@@ -1,0 +1,76 @@
+/*-- scss:defaults --*/
+$link-color: #39729E;
+$text-muted: #6a737b;
+
+/*-- scss:rules --*/
+
+.layout-example {
+    background: $gray-500;
+    color: $white;
+    text-align: center;
+    margin-bottom: 1em;
+    font-family: $font-family-monospace;
+    font-size: .875em;
+    font-weight: 600;
+    padding-top: 1em;
+    border-radius: 3px;
+}
+
+.left {
+    text-align: left;
+    padding-left: 1em;
+}
+
+.right {
+    text-align: right;
+    padding-right: 1em;
+}
+
+.hello-quarto-banner h1 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+#quarto-announcement {
+    padding: 1em;
+    font-size: 1em;
+    font-weight: bold;
+    color: $white;
+    background-color: #447099;
+}
+
+#quarto-announcement a {
+    color: $white;
+}
+
+.video-thumbnail {
+    position: relative;
+    display: inline-block;
+}
+
+.video-thumbnail img {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: grayscale(100%);
+    /* Apply grayscale */
+    transition: filter 0.3s ease;
+    /* Smooth transition for hover effect */
+}
+
+.video-thumbnail img:hover {
+    filter: grayscale(0%);
+    /* Revert to color on hover */
+}
+
+.video-thumbnail .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: url('assets/play-button.png') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+}

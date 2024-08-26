@@ -1,10 +1,17 @@
-### **Scraping Basics and Scraping `example.com`**
+### **Scraping Basics**
 
 ---
 
-```{r}
-knitr::include_url("https://calmcode.io/course/gazpacho/introduction", height = 1000)
-```
+::: {#fig-03}
+<div class="video-container">
+  <a href="https://calmcode.io/course/gazpacho/introduction">
+    <img src="assets/screenshots/03.png" alt="Video Thumbnail">
+    <div class="play-button">&#9654;</div>
+  </a>
+</div>
+
+See this video on [calmcode.io - an alternative to beautifulsoup](https://calmcode.io/course/gazpacho/introduction).
+:::
 
 
 In this section, we will dive into the fundamentals of web scraping and provide a hands-on example by scraping a simple webpage, `example.com`. This exercise will help you understand how to send HTTP requests, parse HTML content, and extract specific data from a webpage.
